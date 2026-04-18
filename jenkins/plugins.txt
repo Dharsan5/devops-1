@@ -1,0 +1,8 @@
+workflow-aggregator
+pipeline-stage-view
+git
+docker-workflow
+docker-plugin
+credentials-binding
+configuration-as-code
+blueocean

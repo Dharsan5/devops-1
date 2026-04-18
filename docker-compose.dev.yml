@@ -1,0 +1,28 @@
+version: '3.9'
+
+# Dev override — mounts source for hot reload
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend/src:/app/src
+    command: npx nodemon src/index.js
+    environment:
+      NODE_ENV: development
+
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    command: npm start
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_BACKEND_URL: http://localhost:5000
+      CHOKIDAR_USEPOLLING: "true"
