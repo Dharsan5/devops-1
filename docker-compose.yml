@@ -9,6 +9,9 @@ services:
     container_name: chat-backend
     restart: unless-stopped
     env_file: ./backend/.env
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     ports:
       - "5000:5000"
     networks:
